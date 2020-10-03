@@ -52,7 +52,7 @@ public class UserRegistration {
 		} while (!Pattern.matches(mobilePattern, mobileNumber));
 		System.out.println("\nUser mobile number is " + mobileNumber);
 
-		String passPattern = "([a-zA-Z0-9@#$%^*.,/](?=.*[A-Z]){1,}(?=.*[0-9]){1,}){8,}";
+		String passPattern = "([a-zA-Z0-9@#$%^*.,/](?=.*[A-Z]){1,}(?=.*[0-9]){1,}(?=.[.,:;'!@#$%^&*_+=|[](){}]){1}){8,}";
 		String password;
 		do {
 			System.out.println("\nEnter your Paasword");
