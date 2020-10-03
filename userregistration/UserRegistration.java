@@ -52,7 +52,7 @@ public class UserRegistration {
 		} while (!Pattern.matches(mobilePattern, mobileNumber));
 		System.out.println("\nUser mobile number is " + mobileNumber);
 
-		String passPattern = "([a-zA-Z0-9@#$%^*.,/](?=.*[A-Z]){1,}(?=.*[0-9]){1,}(?=.[.,:;'!@#$%^&*_+=|[](){}]){1}){8,}";
+		String passPattern = "^(?=.{8,}$)(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]*[@#$%^*!&][0-9a-zA-Z]*";
 		String password;
 		do {
 			System.out.println("\nEnter your Paasword");
@@ -63,5 +63,22 @@ public class UserRegistration {
 				System.out.println("Invalid password!!");
 		} while (!Pattern.matches(passPattern, password));
 		System.out.println("\nUser password is " + password);
+		
+		System.out.println("Emails validated : \n");
+		String[] emailSamples = new String[] { "abc@yahoo.com", "abc-100@yahoo.com", "abc.100@yahoo.com", "abc111@abc.com",
+				"abc-100@abc.net", "abc.100@abc.com.au", "abc@1.com", "abc@gmail.com.com", "abc+100@gmail.com", "abc",
+				"abc@.com.my", "abc123@gmail.a", "abc123@.com", "abc123@.com.com", ".abc@abc.com", "abc()*@gmail.com",
+				"abc@%*.com", "abc..2002@gmail.com", "abc.@gmail.com", "abc@abc@gmail.com", "abc@gmail.com.1a",
+				"abc@gmail.com.aa.au" };
+		for (String sample : emailSamples) {
+			System.out.println(sample + ": " + validateEmail(sample));
+		}
+	}
+	public static boolean validateEmail(String email) {
+		String pattern="^[a-z]+[_+-.]{0,1}[a-z0-9]+@[a-z0-9]+[.]{1}[a-z]{2,}([.]{0,1}[a-z]{2,}){0,1}([,]){0,1}$";
+		if (Pattern.matches(pattern,email)) 
+			return true;
+		else 
+			return false;
 	}
 }
